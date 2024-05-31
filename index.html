@@ -1,0 +1,82 @@
+                  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+  body{
+    background-image: url('bg.jpg');
+  }
+  
+        .offer-container {
+          
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border: 1px solid #bdd4f5;
+            margin: 1%;
+            background-color: #bcd4f5;
+          margin-top:20%;
+          border-radius:10px;
+        }
+      .claim-button1 {
+            background-color:#83aff0;
+            color: black;
+            border: none;
+          border-radius:25px;
+    font-size:28px;
+            cursor: pointer;
+            margin-right: 20px;
+      }
+        .claim-button {
+            background-color:#eb3480;
+            color: #fff;
+            border: none;
+          border-radius:25px;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+        .offer-text {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+<button class="claim-button1" onclick="window.history.back()"><i class="fas fa-circle-arrow-left"></i></button>
+<div class="offer-container">
+    <button class="claim-button" onclick="document.location='loan.html'">Loan</button>
+    <div class="offer-text">💰 Loan নিতে এখানে tap করো।</div>
+</div>
+  <div class="offer-container">
+    <button class="claim-button" onclick="ocument.location='https://nfcard.github.io/add/offer.html'">Claim</button>
+    <div class="offer-text">📢 দুই-চার-পাচঁ<p id="balance">Coming....</p></div>
+</div>
+  </div>
+  <div class="offer-container">
+    <button class="claim-button" onclick="document.location='https://nfcard.github.io/add/withdraw.html'">Cashout</button>
+    <div class="offer-text">💸 Cashout করতে এখানে tap করো</div>
+</div>
+
+<script>
+    function fetchData() {
+        var url = 'https://docs.google.com/spreadsheets/d/1U72BoHdSqC1E_orTmcBYDShbQfErO9X-wQrPyBTzkTs/htmlview'; // Provided Google Sheets URL
+        fetch(url)
+            .then(response => response.text())
+            .then(data => {
+                var parser = new DOMParser();
+                var htmlDoc = parser.parseFromString(data, 'text/html');
+                var cellElement = htmlDoc.querySelectorAll('table')[0].rows[1].cells[4]; // Fetching data from the first table, row 2 column 4
+                
+                // Handling different types of cell content
+                var cellText = cellElement.innerText || cellElement.textContent;
+                document.getElementById('balance').innerText = cellText.trim();
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    }
+
+    window.onload = fetchData;
+</script>
+
+</body>
+</html>
