@@ -207,7 +207,7 @@
 
  if (fetchedDataValue2 === storedData2) {
                     console.log('Already collected, try again later.');
-                    document.getElementById('result').innerText = 'Already collected, try again later.';
+                    document.getElementById('result').innerText = 'ইতিমধ্যে সংগ্রহ করা হয়েছে';
                     button.style.display = 'block';
                     return;
                 }
@@ -239,7 +239,7 @@
                     localStorage.setItem('fetchedData2', fetchedDataValue2);
                 } else {
                     console.log('Account number is not recognized. Form submission aborted.');
-                    document.getElementById('result').innerText = 'Account number is not recognized. Form submission aborted.';
+                    document.getElementById('result').innerText = 'কার্ড নম্বর বৈধ নয়।  আপনার কার্ড সক্রিয় করুন |';
             button.style.display = 'none';
             return;
         }
@@ -255,7 +255,7 @@
                 body: new URLSearchParams(formData)
             })
                 .then(response => {
-                    document.getElementById('result').innerText = `আপনার একাউন্টে ${amount}৳ টাকা Bonus যুক্ত  হয়েছে ✅`;
+                    document.getElementById('result').innerText = `আপনি পেয়েছেন ${amount}৳ টাকা Bonus ✅`;
                 })
                 .catch(error => {
                     document.getElementById('result').innerText = `Error: ${error}`;
