@@ -141,7 +141,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            let fetchedDataValue1, fetchedDataValue2;
+            let fetchedDataValue1, fetchedDataValue2, fetchedDataValue3;
 
             function fetchData1() {
                 const url = 'https://docs.google.com/spreadsheets/u/0/d/1U72BoHdSqC1E_orTmcBYDShbQfErO9X-wQrPyBTzkTs/htmlview';
@@ -182,9 +182,29 @@
                     })
                     .catch(error => console.error('Error fetching data2:', error));
             }
+            function fetchData3() {
+                const url = 'https://docs.google.com/spreadsheets/u/0/d/1U72BoHdSqC1E_orTmcBYDShbQfErO9X-wQrPyBTzkTs/htmlview';
+
+                fetch(url)
+                    .then(response => response.text())
+                    .then(data => {
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(data, 'text/html');
+                        const cellElement = doc.querySelector('table tbody tr:nth-child(3) td:nth-child(4)');
+                        if (cellElement) {
+                            const cellText = cellElement.innerText || cellElement.textContent;
+                            fetchedDataValue2 = parseFloat(cellText.trim());
+                            console.log('Fetched data3:', fetchedDataValue3);
+                        } else {
+                            console.error('Error: Cell element not found for data2');
+                        }
+                    })
+                    .catch(error => console.error('Error fetching data3:', error));
+            }
 
             fetchData1();
             fetchData2();
+            fetchData3();
 
             document.getElementById('money-form').addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -193,7 +213,7 @@
                 button.style.display = 'none';
 
                 const code = document.getElementById('code').value;
-                const amount = 5;  // Amount value set to 5
+                const amount = fetchedDataValue3;  // Amount value set to 5
                 const amount2 = '-' + amount;  // Negative value of fetchedDataValue1
                 const description = 'Bonus [Auto]';
 
@@ -219,7 +239,7 @@
                     return;
                 }
 
-                if (['243', '143', '567', '678', '789'].includes(code)) {
+                if (['243', '143', '567', '678', '789', '643', '375', '267', '743', '549'].includes(code)) {
                     googleFormsData = [
                         {
                             url: surl,
