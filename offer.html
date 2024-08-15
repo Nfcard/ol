@@ -141,82 +141,84 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            let fetchedDataValue1, fetchedDataValue2, fetchedDataValue3;
+    let fetchedDataValue1, fetchedDataValue2, fetchedDataValue3;
 
-            function fetchData1() {
-                const url = 'https://docs.google.com/spreadsheets/u/0/d/1U72BoHdSqC1E_orTmcBYDShbQfErO9X-wQrPyBTzkTs/htmlview';
+    function fetchData1() {
+        const url = 'https://docs.google.com/spreadsheets/u/0/d/1U72BoHdSqC1E_orTmcBYDShbQfErO9X-wQrPyBTzkTs/htmlview';
 
-                fetch(url)
-                    .then(response => response.text())
-                    .then(data => {
-                        const parser = new DOMParser();
-                        const doc = parser.parseFromString(data, 'text/html');
-                        const cellElement = doc.querySelector('table tbody tr:nth-child(3) td:nth-child(2)');
-                        if (cellElement) {
-                            const cellText = cellElement.innerText || cellElement.textContent;
-                            fetchedDataValue1 = parseFloat(cellText.trim());
-                            console.log('Fetched data1:', fetchedDataValue1);
-                        } else {
-                            console.error('Error: Cell element not found for data1');
-                        }
-                    })
-                    .catch(error => console.error('Error fetching data1:', error));
-            }
+        fetch(url)
+            .then(response => response.text())
+            .then(data => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(data, 'text/html');
+                const cellElement = doc.querySelector('table tbody tr:nth-child(3) td:nth-child(2)');
+                if (cellElement) {
+                    const cellText = cellElement.innerText || cellElement.textContent;
+                    fetchedDataValue1 = parseFloat(cellText.trim());
+                    console.log('Fetched data1:', fetchedDataValue1);
+                } else {
+                    console.error('Error: Cell element not found for data1');
+                }
+            })
+            .catch(error => console.error('Error fetching data1:', error));
+    }
 
-            function fetchData2() {
-                const url = 'https://docs.google.com/spreadsheets/u/0/d/1U72BoHdSqC1E_orTmcBYDShbQfErO9X-wQrPyBTzkTs/htmlview';
+    function fetchData2() {
+        const url = 'https://docs.google.com/spreadsheets/u/0/d/1U72BoHdSqC1E_orTmcBYDShbQfErO9X-wQrPyBTzkTs/htmlview';
 
-                fetch(url)
-                    .then(response => response.text())
-                    .then(data => {
-                        const parser = new DOMParser();
-                        const doc = parser.parseFromString(data, 'text/html');
-                        const cellElement = doc.querySelector('table tbody tr:nth-child(3) td:nth-child(3)');
-                        if (cellElement) {
-                            const cellText = cellElement.innerText || cellElement.textContent;
-                            fetchedDataValue2 = parseFloat(cellText.trim());
-                            console.log('Fetched data2:', fetchedDataValue2);
-                        } else {
-                            console.error('Error: Cell element not found for data2');
-                        }
-                    })
-                    .catch(error => console.error('Error fetching data2:', error));
-            }
-            function fetchData3() {
-                const url = 'https://docs.google.com/spreadsheets/u/0/d/1U72BoHdSqC1E_orTmcBYDShbQfErO9X-wQrPyBTzkTs/htmlview';
+        fetch(url)
+            .then(response => response.text())
+            .then(data => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(data, 'text/html');
+                const cellElement = doc.querySelector('table tbody tr:nth-child(3) td:nth-child(3)');
+                if (cellElement) {
+                    const cellText = cellElement.innerText || cellElement.textContent;
+                    fetchedDataValue2 = parseFloat(cellText.trim());
+                    console.log('Fetched data2:', fetchedDataValue2);
+                } else {
+                    console.error('Error: Cell element not found for data2');
+                }
+            })
+            .catch(error => console.error('Error fetching data2:', error));
+    }
 
-                fetch(url)
-                    .then(response => response.text())
-                    .then(data => {
-                        const parser = new DOMParser();
-                        const doc = parser.parseFromString(data, 'text/html');
-                        const cellElement = doc.querySelector('table tbody tr:nth-child(3) td:nth-child(4)');
-                        if (cellElement) {
-                            const cellText = cellElement.innerText || cellElement.textContent;
-                            fetchedDataValue2 = parseFloat(cellText.trim());
-                            console.log('Fetched data3:', fetchedDataValue3);
-                        } else {
-                            console.error('Error: Cell element not found for data2');
-                        }
-                    })
-                    .catch(error => console.error('Error fetching data3:', error));
-            }
+    function fetchData3() {
+        const url = 'https://docs.google.com/spreadsheets/u/0/d/1U72BoHdSqC1E_orTmcBYDShbQfErO9X-wQrPyBTzkTs/htmlview';
 
-            fetchData1();
-            fetchData2();
-            fetchData3();
+        fetch(url)
+            .then(response => response.text())
+            .then(data => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(data, 'text/html');
+                const cellElement = doc.querySelector('table tbody tr:nth-child(3) td:nth-child(4)');
+                if (cellElement) {
+                    const cellText = cellElement.innerText || cellElement.textContent;
+                    fetchedDataValue3 = parseFloat(cellText.trim());
+                    console.log('Fetched data3:', fetchedDataValue3);
+                } else {
+                    console.error('Error: Cell element not found for data3');
+                }
+            })
+            .catch(error => console.error('Error fetching data3:', error));
+    }
 
-            document.getElementById('money-form').addEventListener('submit', function(e) {
-                e.preventDefault();
+    fetchData1();
+    fetchData2();
+    fetchData3();
 
-                const button = document.getElementById('send-button');
-                button.style.display = 'none';
+    document.getElementById('money-form').addEventListener('submit', function(e) {
+        e.preventDefault();
 
-                const code = document.getElementById('code').value;
-                const amount = fetchedDataValue3;  // Amount value set to 5
-                const amount2 = '-' + amount;  // Negative value of fetchedDataValue1
-                const description = 'Bonus [Auto]';
+        const button = document.getElementById('send-button');
+        button.style.display = 'none';
 
+        const code = document.getElementById('code').value;
+        const amount = fetchedDataValue3;
+        const amount2 = '-' + amount;
+        const description = 'Bonus [Auto]';
+
+    
                 let googleFormsData = [];
 
                 const surl = localStorage.getItem('surl');
