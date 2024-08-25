@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Sheets Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .buttons-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+        button {
+            display: block;
+            margin: 10px auto;
+            padding: 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .iframe-container {
+            width: 100%;
+            max-width: 800px;
+            height: 500px; /* Adjust height as needed */
+            position: relative;
+            margin-top: 20px;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: none; /* Initially hide all iframes */
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="buttons-container">
+        <button onclick="showSheet('sheet1')">Show Sheet 1</button>
+        <button onclick="showSheet('sheet2')">Show Sheet 2</button>
+        <button onclick="showSheet('sheet3')">Show Sheet 3</button>
+    </div>
+    <div class="iframe-container">
+        <iframe id="sheet1" src="https://docs.google.com/spreadsheets/d/1MlPp7zpJWnXb7XdImIcrgUNWWqFNidOCGF1rBKG7Xjg/htmlview"></iframe>
+        <iframe id="sheet2" src="https://docs.google.com/spreadsheets/d/1rRDtmBI6TarTQ5Bb6U_I__KUowkMJ2RwnLmCZLjW-4U/htmlview"></iframe>
+        <iframe id="sheet3" src="https://docs.google.com/spreadsheets/d/14-IqnFf2n_9KFJ40CHg84cfL0Nn3GdM8z31WhJ_89H4/htmlview"></iframe>
+    </div>
+    <script>
+        function showSheet(sheetId) {
+            // Hide all iframes
+            const iframes = document.querySelectorAll('.iframe-container iframe');
+            iframes.forEach(iframe => iframe.style.display = 'none');
+
+            // Show the selected iframe
+            const selectedIframe = document.getElementById(sheetId);
+            if (selectedIframe) {
+                selectedIframe.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
