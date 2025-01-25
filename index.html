@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"> <style>
+  body{
+    background:#f8f0fc;
+  opacity: 0;
+          transform: translateY(20px);
+            animation: fadeIn .7s forwards;
+        }
+  @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+  }
+          .gif-container {
+            text-align: center;
+            border-radius:10px;
+            margin: 5px auto;
+        }
+
+        .gif-container img {
+          border-radius:10px;
+          max-width: 100%;
+            height: auto;
+        }
+        .offer-container {
+          
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border: 1px solid #bdd4f5;
+            margin: 1%;
+            background-color: #bcd4f5;
+          margin-top:8%;
+          border-radius:10px;
+        }
+      .claim-button1 {
+            
+            color: black;
+            border: none;
+          border-radius:25px;
+    font-size:28px;
+            cursor: pointer;
+            margin-right: 20px;
+      }
+        .claim-button {
+            background-color:#eb3480;
+            color: #fff;
+            border: none;
+          border-radius:25px;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+        .offer-text {
+            flex-grow: 1;
+        }
+     @keyframes rotateIn {
+            from {
+                opacity: 0;
+                transform: rotateX(90deg);
+            }
+            to {
+                opacity: 1;
+                transform: rotateX(0);
+            }
+        }
+
+        /* Style for individual letters */
+        .letter {
+            display: inline-block;
+            opacity: 0;
+            transform-origin: bottom;
+            animation: rotateIn 0.5s ease forwards;
+        }
+.letter-wave {
+    display: inline-block;
+    opacity: 0;
+    animation: wave.4s ease-in-out forwards;
+}
+
+@keyframes wave {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+    </style>
+</head>
+<body>
+<button class="claim-button1" onclick="window.history.back()"><i class="fas fa-circle-arrow-left"></i></button>
+  <div class="offer-container">
+    <button class="claim-button" onclick="document.location=''">😉</button>
+    <div class="offer-text"> Hello 👋 📢<p style="font-weight: bold;font-size: 16px" id="balance">Why are you here? Look at the offer below</p></div>
+</div>
+  </div>
+   <div class="gif-container">
+        <img src="gif5.gif" alt="No offer">
+   </div>
+</body>
+</html>
