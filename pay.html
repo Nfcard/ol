@@ -447,8 +447,9 @@ form {
             background-color: gray;
             color: white;
             border: none;
-            padding: 5px;
-            font-size: 16px;
+            padding: 10px;
+            font-size: 18px;
+         min-height: 20px;
             
             margin-top: 10px;
             border-radius: 8px;
@@ -499,7 +500,7 @@ form {
           <img style="pointer-events: none" src="dps2.jpg" alt=" Logo"/>
           </div><div class="radio-input">
             <input id="Bkash" type="radio" name="payment">
-            মাসিক <span style="color:#f62f5e;font-weight:bold" id="total">৳৫০০</span> করে ৬ মাসে মোট <span style="color:green">৳৩০০০</span> জমা করবো। ( 20 টাকা বোনাস) 
+            মাসিক <span style="color:#f62f5e;font-weight:bold" id="total">৳৫০০</span> করে ৬ মাসে মোট <span style="color:green">৳৩০০০</span> জমা করবো। 
           </div>
         </label>
               <label for="2" class="method paypal">
@@ -507,7 +508,7 @@ form {
           <img style="pointer-events: none" src="dps2.jpg" alt=" Logo"/>
           </div><div class="radio-input">
             <input id="2" type="radio" name="payment">
-            মাসিক <span style="color:#f62f5e;font-weight:bold" id="total">৳১০০০</span> করে ৬ মাসে মোট <span style="color:green">৳৬০০০</span> জমা করবো।( 20 টাকা বোনাস)
+            মাসিক <span style="color:#f62f5e;font-weight:bold" id="total">৳১০০০</span> করে ৬ মাসে মোট <span style="color:green">৳৬০০০</span> জমা করবো।
           </div>
         </label>
       </div>
@@ -521,7 +522,21 @@ form {
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
- <script>
+ <script>function getQueryParams() {
+    const queryString = window.location.search; // Get the query string from the URL
+    const params = {};
+
+    if (queryString) {
+        const pairs = queryString.substring(1).split("&"); // Remove "?" and split parameters
+        for (const pair of pairs) {
+            const [key, value] = pair.split("="); // Split key and value
+            params[decodeURIComponent(key)] = decodeURIComponent(value || "");
+        }
+    }
+
+    return params; // Return an object with all parameters
+} const params = getQueryParams();
+   document.getElementById("name").value = params.number;
   let dpsValue,dpsl;function submit(){document.getElementById("popup").classList.add("active")}$(".method").on("click",function(){$(".method").removeClass("blue-border"),$(this).addClass("blue-border")}),$(".next-btn").on("click",function(){let e=$('input[name="payment"]:checked').attr("id");e?("card"===e?(dpsValue="500",dpsl="1"):"Bkash"===e?(dpsValue="500",dpsl="2"):"2"===e&&(dpsValue="1000",dpsl="3"),submit()):alert("Please select a saving timeline")}),$(".back-btn").on("click",function(){let e=$('input[name="payment"]:checked').attr("id");e?("card"===e?dpsValue="500":"Bkash"===e?dpsValue="500":"2"===e&&(dpsValue="1000"),dpsl="undefined",submit()):alert("Please select a saving timeline")});const inputs=document.querySelectorAll(".form-header input, .form-group input"),sendButton=document.getElementById("send-button");inputs.forEach(e=>{e.addEventListener("input",()=>{""!==e.value.trim()?sendButton.classList.add("active"):sendButton.classList.remove("active")})}),document.getElementById("send-money-form").addEventListener("submit",function(e){e.preventDefault(),document.getElementById("send-button").style.display="block",document.getElementById("send-button").style.opacity="0.5",document.getElementById("send-button").innerText="Sending......",document.getElementById("send-button").disabled=!0,document.getElementById("popup2").classList.add("active");let t=new Audio("ting.mp3"),n=new Audio("fail.mp3");t.preload="auto",t.load(),n.preload="auto",n.load();let d=document.getElementById("name").value,l=parseFloat(dpsValue),s;if(s="undefined"!==dpsl?`DPS Open ${l}`:`DPS Close ${l}`,0!==l){let a=`${dgif}/1FAIpQLSfiZqdBMMLU0yWsw4Pm8MRl4_BduDggImsYBOITaSdYRNOiOg/${dgfie}`,o=new FormData;o.append("entry.1155345563","0"),o.append("entry.566650239",`Monthly [${d}]`),o.append("entry.155061264",s),Promise.all([fetch(a,{method:"POST",body:o,mode:"no-cors"})]).then(()=>{document.getElementById("popup").classList.remove("active"),document.getElementById("send-button").style.display="none",setTimeout(()=>{window.location.href=`thnk.html?ac=${d}0${dpsl}`},1e3)}).catch(e=>{document.getElementById("result2").innerText=`Error: ${e}`,document.getElementById("send-button").style.display="block"})}else{document.getElementById("send-button").style.opacity="1",document.getElementById("send-button").innerHTML='<i class="fa-duotone fa-solid fa-paper-plane"></i>',document.getElementById("send-button").disabled=!1,document.getElementById("popup").classList.remove("active");let i,p,u;i=document.getElementById("send-money-form"),u=0,p=setInterval(function(){i.style.transform=`translateX(${Math.floor(6*Math.random())-3}px)`,(u+=50)>=300&&(clearInterval(p),i.style.transform="")},50);return}});</script>
 </body>
 </html>
